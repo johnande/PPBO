@@ -1,17 +1,13 @@
-class Shark:
-    def __init__(self, name):  
-        self.name = name
+class Handphone:
+    def __init__(self, merk, series):
+        self.merk = merk
+        self.series = series
 
-    def swim(self):
-        print(self.name + " is swimming.")
+    def info_handphone(self):
+        print(f"Handphone {self.merk} series {self.series}")
 
-    def be_awesome(self):
-        print(self.name + " is being awesome.")
+handphone_pertama = Handphone("Iphone", "7+")
+handphone_kedua = Handphone("Samsung", "S10")
 
-def main():
-    sammy = Shark("Sammy")
-    sammy.swim()  
-    sammy.be_awesome()  
-
-if __name__ == "__main__":  
-    main()
+handphone_pertama.info_handphone()
+handphone_kedua.info_handphone()
