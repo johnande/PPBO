@@ -1,7 +1,15 @@
-jari_jari_input = float(input("Masukkan jari-jari lingkaran: "))
+bilangan = int(input("Masukkan angka: "))
 
-luas = 3.14 * jari_jari_input ** 2
-keliling = 2 * 3.14 * jari_jari_input
+if bilangan <= 1:
+    print(f"{bilangan} bukan bilangan prima.")
+else:
+    prima = True
+    for i in range(2, int(bilangan ** 0.5) + 1):
+        if bilangan % i == 0:
+            prima = False
+            break
 
-print(f"Luas lingkaran dengan jari-jari {jari_jari_input} adalah: {luas:.2f}")
-print(f"Keliling lingkaran dengan jari-jari {jari_jari_input} adalah: {keliling:.2f}")
+    if prima:
+        print(f"{bilangan} adalah bilangan prima.")
+    else:
+        print(f"{bilangan} bukan bilangan prima.")
