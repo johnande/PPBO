@@ -1,16 +1,7 @@
-suhu = float(input("Masukkan nilai suhu (Celsius): "))
+def hitung_mundur(angka):
+    for i in range(angka, -1, -1):
+        print(i, end=' ')
 
-if suhu < 0:
-    klasifikasi = "Membeku"
-elif suhu < 10:
-    klasifikasi = "Sangat Dingin"
-elif suhu < 20:
-    klasifikasi = "Sejuk"
-elif suhu < 30:
-    klasifikasi = "Hangat"
-elif suhu < 40:
-    klasifikasi = "Panas"
-else:
-    klasifikasi = "Sangat Panas"
+angka_input = int(input("Masukkan angka: "))
 
-print(f"Suhu {suhu} derajat Celsius diklasifikasikan sebagai {klasifikasi}")
+hitung_mundur(angka_input)
