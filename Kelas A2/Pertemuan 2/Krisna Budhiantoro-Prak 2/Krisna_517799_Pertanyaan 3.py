@@ -1,24 +1,17 @@
-class Persegi:
-    def __init__(self, sisi):
-        self.sisi = sisi
+class Shark:
+    def __init__(self, name):  
+        self.name = name
 
-    def hitung_luas(self):
-        luas = self.sisi ** 2
-        return luas
+    def swim(self):
+        print(self.name + " is swimming.")
 
-    def hitung_keliling(self):
-        keliling = 4 * self.sisi
-        return keliling
+    def be_awesome(self):
+        print(self.name + " is being awesome.")
 
 def main():
-    sisi_persegi = float(input("Masukkan panjang sisi persegi: "))
-    persegi = Persegi(sisi_persegi)
+    sammy = Shark("Sammy")
+    sammy.swim()  
+    sammy.be_awesome()  
 
-    luas_persegi = persegi.hitung_luas()
-    keliling_persegi = persegi.hitung_keliling()
-
-    print(f"Luas persegi: {luas_persegi}")
-    print(f"Keliling persegi: {keliling_persegi}")
-
-if __name__ == "__main__":
+if __name__ == "__main__":  
     main()
