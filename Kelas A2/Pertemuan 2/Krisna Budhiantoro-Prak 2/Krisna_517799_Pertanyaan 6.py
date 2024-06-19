@@ -1,15 +1,30 @@
-class Headphones:
-    def __init__(self, merk, series):
-        self.merk = merk
-        self.series = series
+class py_solution:
 
-    def info_Handphone(self):
-        print(f"Handphone ({self.merk}) series ({self.series})")
+    def pow(self, x, n):
 
-# Membuat objek menggunakan konstruktor
-Handphone_saya = Headphones("Iphone", "7+")
+        if x == 0 or x == 1 or n == 1:
+            return x
 
-print(Handphone_saya.merk)
-print(Handphone_saya.series)
+        if x == -1:
+            if n % 2 == 0:
+                return 1
+            else:
+                return -1
 
-Handphone_saya.info_Handphone()
+        if n == 0:
+            return 1
+
+        if n < 0:
+            return 1 / self.pow(x, -n)
+
+        val = self.pow(x, n // 2)
+
+        if n % 2 == 0:
+            return val + val
+        else:
+            return val * x
+
+# Example usage
+print(py_solution().pow(2, -3))
+print(py_solution().pow(3, 5))
+print(py_solution().pow(100, 0))
