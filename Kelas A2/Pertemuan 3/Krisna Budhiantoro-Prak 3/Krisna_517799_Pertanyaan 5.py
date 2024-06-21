@@ -14,9 +14,9 @@ class Koordinat3D(Koordinat2D):
         self.z = z
 
     def tampilkan_koord(self):
-        print('x', self.x)
-        print('y', self.y)
-        print('z', self.z)
+        print('x =', self.x)
+        print('y =', self.y)
+        print('z =', self.z)
 
 titik1 = Koordinat3D(1, 2, 3)
 titik1.tampilkan_koord()
