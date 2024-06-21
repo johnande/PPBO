@@ -1,27 +1,30 @@
-# kelas induk
+# parent class
 class Bird:
 
     def __init__(self):
-        print("Burung siap")
+        print("Bird is ready")
 
     def whoisThis(self):
-        print("Burung")
+        print("Bird")
 
     def swim(self):
-        print("Berenang lebih cepat")
+        print("Swim faster")
 
+# child class
 class Penguin(Bird):
 
-    def __init__(self):        # panggil fungsi super()
+    def __init__(self):
+        # call super() function
         super().__init__()
-        print("Penguin siap")
+        print("Penguin is ready")
 
     def whoisThis(self):
         print("Penguin")
 
     def run(self):
-        print("Berlari lebih cepat")
+        print("Run faster")
 
+# Instance of child class
 peggy = Penguin()
 peggy.whoisThis()
 peggy.swim()
