@@ -1,62 +1,28 @@
 class Shape:
-    """
-    Kelas dasar untuk semua bentuk geometri.
-    """
+    width = 0
 
     def __init__(self, width):
-        """
-        Konstruktor kelas.
-
-        Args:
-            width (float): Lebar bentuk.
-        """
         self.width = width
 
 
 class Square(Shape):
-    """
-    Kelas untuk mewakili persegi.
-    """
-
     name = "Square"
 
     def get_area(self):
-        """
-        Menghitung luas persegi.
-
-        Returns:
-            float: Luas persegi.
-        """
         return self.width**2
 
 
 class Triangle(Shape):
-    """
-    Kelas untuk mewakili segitiga.
-    """
-
     name = "Triangle"
 
-    def __init__(self, width, height):
-        """
-        Konstruktor kelas.
+    height = 0
 
-        Args:
-            width (float): Lebar segitiga.
-            height (float): Tinggi segitiga.
-        """
-        super().__init__(width)
+    def __init__(self, width, height):
+        self.width = width
         self.height = height
 
     def get_area(self):
-        """
-        Menghitung luas segitiga.
-
-        Returns:
-            float: Luas segitiga.
-        """
         return 0.5 * self.width * self.height
-
 
 # Membuat objek SquareX dan TriangleY
 SquareX = Square(5)
