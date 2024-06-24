@@ -1,0 +1,27 @@
+class Vector:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    # Operator overloading untuk penjumlahan (+)
+    def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+
+    # Operator overloading untuk pengurangan (-)
+    def __sub__(self, other):
+        return Vector(self.x - other.x, self.y - other.y)
+
+    def __str__(self):
+        return f'({self.x}, {self.y})'
+
+# Membuat dua objek vektor
+v1 = Vector(1, 2)
+v2 = Vector(3, 4)
+
+# Melakukan penjumlahan vektor
+result_addition = v1 + v2
+print("Hasil penjumlahan vektor:", result_addition)
+
+# Melakukan pengurangan vektor
+result_subtraction = v1 - v2
+print("Hasil pengurangan vektor:", result_subtraction)
