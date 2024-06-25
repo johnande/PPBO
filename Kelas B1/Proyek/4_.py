@@ -31,7 +31,7 @@ class Model:
             for x in a:
                 if x.endswith(".mp3"):
                     self.allSongsList.append(x)         
-        self.originalSongsList = self.allSongsList.copy()  # Save the full list
+        self.originalSongsList = self.allSongsList.copy() 
 
 
     def filterSongs(self, searchText):
@@ -59,10 +59,9 @@ class Controller:
         self.timer = QtCore.QTimer()
         self.timer.setInterval(1000) 
         self.timer.timeout.connect(self.updateProgress)
-        self.is_seeking = False  # Add a flag to prevent conflicts during seeking
-
+        self.is_seeking = False 
     def playNewSong(self, event=None):
-        self.view.horizontalSliderMusic.setValue(0)  # Reset slider to 0 at the start
+        self.view.horizontalSliderMusic.setValue(0)  
         selected_items = self.view.listWidgetMusic.selectedItems()
         if not selected_items:
             return
@@ -90,7 +89,7 @@ class Controller:
             sound = pygame.mixer.Sound(song_path)
             duration = int(sound.get_length())
         
-        self.view.horizontalSliderMusic.setMaximum(duration)  # Set the duration of the song
+        self.view.horizontalSliderMusic.setMaximum(duration) 
 
         title = os.path.splitext(os.path.basename(song_path))[0]
         artist = str(metaData.get("TPE1", "Unknown Artist")) if 'metaData' in locals() else "Unknown Artist"
@@ -107,11 +106,11 @@ class Controller:
     def playPause(self, event):
         if pygame.mixer.music.get_busy():
             pygame.mixer.music.pause()
-            self.timer.stop()  # Stop the timer when the music is paused
+            self.timer.stop()  
             self.view.labelPlayPause.setPixmap(QtGui.QPixmap(os.path.join(self.model.iconDirectory, "play.png")))
         else:
             pygame.mixer.music.unpause()
-            self.timer.start()  # Start the timer when the music is resumed
+            self.timer.start()  
             self.view.labelPlayPause.setPixmap(QtGui.QPixmap(os.path.join(self.model.iconDirectory, "pause.png")))
 
 
@@ -145,21 +144,15 @@ class Controller:
         metaData = MP3(song_path)
         song_duration = metaData.info.length
 
-        # Update the slider position only when the user releases the mouse button
         if not self.is_seeking:
             self.is_seeking = True
-            self.timer.stop()  # Stop the timer to prevent conflicts
+            self.timer.stop()  
 
-        # Seek to the new position
         pygame.mixer.music.stop()
         pygame.mixer.music.load(song_path)
         pygame.mixer.music.play(start=seek_pos)
         self.view.horizontalSliderMusic.setValue(seek_pos)
-
-        # Restart the timer to update the slider position
         self.timer.start()
-
-        # Reset the seeking flag
         self.is_seeking = False
 
     def filterSongs(self, searchText):
@@ -418,7 +411,7 @@ class GenreController:
         genre_path = self.model.get_genre_path(genre)
         if genre_path:
             songs = [f for f in os.listdir(genre_path) if f.endswith(".mp3")]
-            self.main_controller.model.allSongsList = songs  # Update main controller's song list
+            self.main_controller.model.allSongsList = songs 
             self.main_controller.view.listWidgetMusic.clear()
             for song in songs:
                 item = QtWidgets.QListWidgetItem()
@@ -432,7 +425,7 @@ class GenreController:
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     model = Model()
-    model.searchForSongs()  # Populate the song list initially
+    model.searchForSongs() 
     view = View()
     controller = Controller(model, view)
     view.show()
