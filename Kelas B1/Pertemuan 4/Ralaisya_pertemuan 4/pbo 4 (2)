@@ -1,0 +1,29 @@
+class Orang:
+    def __init__(self, nama_depan, nama_belakang, nomor_id):
+        self.nama_depan = nama_depan
+        self.nama_belakang = nama_belakang
+        self.nomor_id = nomor_id
+
+class Mahasiswa(Orang):
+    SARJANA = "Sarjana"
+    MASTER = "Master"
+    DOKTOR = "Doktor"
+
+    def __init__(self, nama_depan, nama_belakang, nomor_id, jenjang):
+        super().__init__(nama_depan, nama_belakang, nomor_id)
+        self.jenjang = jenjang
+        self.matkul = []
+
+    def enrol(self, matkul):
+        self.matkul.append(matkul)
+
+# Contoh penggunaan:
+mahasiswa1 = Mahasiswa("Lisya", "Hs", 521611, Mahasiswa.SARJANA)
+print("Nama:", mahasiswa1.nama_depan, mahasiswa1.nama_belakang)
+print("Nomor ID:", mahasiswa1.nomor_id)
+print("Jenjang:", mahasiswa1.jenjang)
+
+# Menambahkan mata kuliah ke dalam list matkul
+mahasiswa1.enrol("Matematika Dasar")
+mahasiswa1.enrol("Bahasa Inggris")
+print("Mata kuliah yang diambil:", mahasiswa1.matkul)
