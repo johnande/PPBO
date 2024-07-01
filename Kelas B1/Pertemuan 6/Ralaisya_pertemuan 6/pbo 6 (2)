@@ -1,0 +1,45 @@
+from abc import ABC, abstractmethod
+
+class Pasien(ABC):
+    @abstractmethod
+    def kondisi(self):
+        pass
+    
+    @abstractmethod
+    def biaya_perawatan(self):
+        pass
+
+class RawatInap(Pasien):
+    jenis = "Rawat Inap"
+    
+    def __init__(self, lama_inap, biaya_harian):
+        self.lama_inap = lama_inap
+        self.biaya_harian = biaya_harian
+    
+    def kondisi(self):
+        return "Pasien dirawat inap selama {} hari".format(self.lama_inap)
+    
+    def biaya_perawatan(self):
+        return self.lama_inap * self.biaya_harian
+
+class RawatJalan(Pasien):
+    jenis = "Rawat Jalan"
+    
+    def __init__(self, jumlah_kunjungan, biaya_per_kunjungan):
+        self.jumlah_kunjungan = jumlah_kunjungan
+        self.biaya_per_kunjungan = biaya_per_kunjungan
+    
+    def kondisi(self):
+        return "Pasien menjalani rawat jalan sebanyak {} kali kunjungan".format(self.jumlah_kunjungan)
+    
+    def biaya_perawatan(self):
+        return self.jumlah_kunjungan * self.biaya_per_kunjungan
+
+pasien_rawat_inap = RawatInap(7, 500000)
+pasien_rawat_jalan = RawatJalan(5, 150000)
+
+for pasien in (pasien_rawat_inap, pasien_rawat_jalan):
+    print("Jenis Perawatan:", pasien.jenis)
+    print("Kondisi Pasien:", pasien.kondisi())
+    print("Biaya Perawatan:", pasien.biaya_perawatan())
+    print()
